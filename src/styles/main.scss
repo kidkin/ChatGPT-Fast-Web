@@ -1,0 +1,41 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* 移除宽度和高度的设置使得body自然填满整个视口 */
+}
+
+.home {
+  height: 95vh;
+  width: 95vw;
+  max-height: 90vh; /* 最大高度限制为视口的90%，这样可以防止容器溢出 */
+  border-radius: 10px; /* 四个边缘的弧度 */
+  display: flex; /* 内部使用 Flexbox 布局 */
+  flex-direction: column; /* 默认为列布局 */
+  align-items: center; /* 内部内容垂直居中 */
+  justify-content: flex-start; /* 容器内部内容靠顶对齐 */
+  background: white; /* 背景颜色 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+  position: relative; /* 定位为相对 */
+  margin: auto; /* 水平和垂直居中 */
+  margin-top: calc(5vh); /* Top margin is 5vh to center the app vertically */
+  overflow: hidden;
+}
+
+//滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #eaecf1;
+  border-radius: 3px;
+}
+
+.el-table__body-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.el-table__body-wrapper::-webkit-scrollbar-thumb {
+  background-color: #a1a3a9;
+  border-radius: 3px;
+}

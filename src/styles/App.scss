@@ -1,0 +1,51 @@
+.el-footer {
+  height: 20%;
+  .el-row {
+    position: absolute;
+    bottom: 13.5vh;
+    margin-right: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+  }
+  .el-row > *:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.list {
+  background-color: rgb(192, 243, 243);
+}
+
+.el-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.el-header {
+  background-color:rgb(231, 248, 255);
+}
+
+.el-main {
+  max-height: 70vh;
+  overflow-y: auto;
+  background-color: rgb(255, 255, 255);
+}
+
+.el-footer {
+  background-color:rgb(231, 248, 255);
+}
+.full-height {
+  height: 100%; /* 设置高度为父级的100% */
+}
+
+.full-width {
+  width: 100%; /* 设置宽度为父级的100% */
+}
+
+.example-showcase .el-dropdown-link {
+  cursor: pointer;
+  color: var(--el-color-primary);
+  display: flex;
+  align-items: center;
+}

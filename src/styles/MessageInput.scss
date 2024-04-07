@@ -1,0 +1,15 @@
+.input {
+  position: absolute;
+  bottom: 10px;
+  width: 95%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}

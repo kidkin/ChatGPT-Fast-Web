@@ -1,0 +1,60 @@
+.message-row {
+  display: flex;
+
+  &.right {
+
+    justify-content: flex-end;
+
+    .row {
+      .avatar-wrapper {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .message {
+        overflow: hidden;
+        background-color: rgb(231, 248, 255);
+      }
+    }
+  }
+
+  .row {
+    .avatar-wrapper {
+      .avatar {
+        box-shadow: 20px 20px 20px 3px rgba(0, 0, 0, 0.03);
+        margin-bottom: 20px;
+      }
+    }
+
+    .message {
+      overflow: hidden;
+      font-size: 15px;
+      padding: 1.5px;
+      max-width: 300px;
+      background-color: rgb(242, 242, 242);
+      border-radius: 15px;
+      border: 1px solid rgba(black, 0.2);
+      box-shadow: 20px 20px 20px 2px rgba(0, 0, 0, 0.01);
+    }
+    @media screen and (max-width: 4000px) {
+      .message {
+        max-width: 300px; /* 设置消息展示的最大宽度为300px */
+      }
+    }
+
+    /* 媒体查询，当屏幕宽度大于600px时应用以下样式 */
+    @media screen and (min-width: 600px) {
+      .message {
+        max-width: 600px; /* 设置消息展示的最大宽度为500px */
+      }
+    }
+  }
+}
+
+// 调整markdown组件的一些样式，deep可以修改组件内的样式，正常情况是scoped只能修改本组件的样式。
+:deep(.md-editor-preview-wrapper) {
+  padding: 0 10px;
+
+  .smart-blue-theme p {
+    line-height: unset;
+  }
+}
