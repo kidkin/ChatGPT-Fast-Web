@@ -17,7 +17,7 @@
           </el-main>
           <el-footer>
             <el-row>
-              <ClearMessageButton/>
+              <ClearMessageButton />
               <ModelButton />
               <MaskButton />
             </el-row>
@@ -35,7 +35,7 @@ import ChatFrame from '@/components/ChatFrame.vue'
 import ModelButton from '@/components/ModelButton.vue'
 import { ref } from 'vue'
 import { chat } from '@/services/chatgpt'
-import {  setMessage } from '@/services/init'
+import { setMessage } from '@/utils/init'
 import { useMessageContentStore, useMessageStore } from '@/store/message'
 import { Role, type GPTmessage, type GPTsession, type GPTsessionContent } from '@/types'
 import MaskButton from './components/MaskButton.vue'

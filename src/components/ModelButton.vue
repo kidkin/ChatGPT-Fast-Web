@@ -1,6 +1,12 @@
 <template>
-  <el-dropdown @command="handleCommand" size="large" placement="top" trigger="click" max-height = "300px">
-    <el-button type="primary" circle>
+  <el-dropdown
+    @command="handleCommand"
+    size="large"
+    placement="top"
+    trigger="click"
+    max-height="300px"
+  >
+    <el-button type="primary" circle :size="buttonSize">
       <el-icon><Minus /></el-icon>
     </el-button>
     <template #dropdown>
@@ -24,6 +30,22 @@ import {
 } from 'element-plus'
 import { useOpenaiStore } from '../store/openai'
 import { model } from '../store/model'
+
+import { onMounted, onUnmounted, ref } from 'vue'
+
+//按钮大小
+const buttonSize = ref<'default' | 'small'>('default')
+const updateSize = () => {
+  buttonSize.value = window.innerWidth <= 768 ? 'small' : 'default'
+}
+onMounted(() => {
+  window.addEventListener('resize', updateSize)
+  updateSize()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateSize)
+})
 
 const openaiStore = useOpenaiStore()
 

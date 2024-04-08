@@ -13,6 +13,16 @@
 - 支持上下文联系与删除
 - 角色（面具）功能 参考项目：[NextChat](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web)
 
+## 更新日志
+
+<details open>
+<summary><b>2024年</b></summary>
+	
+日期   |  更新内容
+------- | :-------
+4-8  | 新增对话记录的时间显示，优化ui
+</details>
+
 ## 本地部署
 
 ### 填写密钥

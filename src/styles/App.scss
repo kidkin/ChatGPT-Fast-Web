@@ -2,14 +2,16 @@
   height: 20%;
   .el-row {
     position: absolute;
-    bottom: 13.5vh;
+    // bottom: 13.5vh;
     margin-right: 10px;
+    margin-top: 1vh;
     left: 50%;
     transform: translateX(-50%);
     width: 95%;
   }
-  .el-row > *:not(:last-child) {
-    margin-right: 10px;
+  .el-row > * {
+    margin-right: 1vh;
+    // margin-left: 2.5vh;
   }
 }
 
@@ -23,7 +25,7 @@
 }
 
 .el-header {
-  background-color:rgb(231, 248, 255);
+  background-color: rgb(231, 248, 255);
 }
 
 .el-main {
@@ -33,7 +35,7 @@
 }
 
 .el-footer {
-  background-color:rgb(231, 248, 255);
+  background-color: rgb(231, 248, 255);
 }
 .full-height {
   height: 100%; /* 设置高度为父级的100% */
@@ -49,3 +51,5 @@
   display: flex;
   align-items: center;
 }
+
+
