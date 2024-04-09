@@ -71,7 +71,7 @@ const scrollToBottom = () => {
   })
 }
 
-const dialogVisible = ref(false) // 控制对话框是否显示的状态
+// const dialogVisible = ref(false) // 控制对话框是否显示的状态
 // 屏幕宽度相关变量
 const screenWidth = ref(window.innerWidth)
 const screenState = reactive({ width: 20 })
