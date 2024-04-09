@@ -1,5 +1,5 @@
 <template>
-  <el-button type="primary" circle @click="handleCommand" :size="buttonSize">
+  <el-button plain type="primary" circle @click="handleCommand" :size="buttonSize">
     <el-icon><Delete /></el-icon>
   </el-button>
 </template>

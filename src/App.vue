@@ -20,6 +20,7 @@
           </el-main>
           <el-footer>
             <el-row>
+              <KeyButton />
               <ClearMessageButton />
               <ModelButton />
               <MaskButton />
@@ -47,6 +48,7 @@
 import MessageInput from '@/components/MessageInput.vue'
 import ChatFrame from '@/components/ChatFrame.vue'
 import ModelButton from '@/components/ModelButton.vue'
+import KeyButton from '@/components/KeyButton.vue'
 import { ref, reactive, watchEffect, onMounted, onBeforeUnmount } from 'vue'
 import { chat } from '@/services/chatgpt'
 import { setMessage } from '@/utils/init'

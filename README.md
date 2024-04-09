@@ -20,6 +20,7 @@
 	
 日期   |  更新内容
 ------- | :-------
+4-9  | 新增前端配置apikey按钮，更改按钮样式
 4-8  | 新增对话记录的时间显示，优化ui
 </details>
 
@@ -28,6 +29,7 @@
 ### 填写密钥
 
 ```
+# 可以跳过，进入后点击“钥匙”按钮设置
 # src/store/openai.ts文件
 
 # OPENAI_BASE_URL官方地址为 'https://api.openai.com/v1'
@@ -45,8 +47,8 @@ npm install
 npm run dev
 ```
 
-
 ## 致谢
+
 [![Stargazers repo roster for @kidkin/ChatGPT-Fast-Web](https://reporoster.com/stars/notext/kidkin/ChatGPT-Fast-Web)](https://github.com/kidkin/ChatGPT-Fast-Web/stargazers)
 [![Forkers repo roster for @kidkin/ChatGPT-Fast-Web](https://reporoster.com/forks/notext/kidkin/ChatGPT-Fast-Web)](https://github.com/kidkin/ChatGPT-Fast-Web/network/members)
 

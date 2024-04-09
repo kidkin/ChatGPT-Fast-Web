@@ -6,7 +6,7 @@
     trigger="click"
     max-height="300px"
   >
-    <el-button type="primary" circle :size="buttonSize">
+    <el-button plain type="primary" circle :size="buttonSize">
       <el-icon><Minus /></el-icon>
     </el-button>
     <template #dropdown>
