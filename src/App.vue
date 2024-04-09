@@ -1,12 +1,15 @@
-<!-- eslint-disable vue/valid-v-for -->
 <template>
   <div class="home">
     <el-row class="full-height full-width">
-      <!-- <el-col class="list" :span="4">
-        <el-aside class="hidden-xs-only">{{ asideTitle }}</el-aside>
+      <!-- 侧边栏 -->
+      <!-- <el-col class="list hidden-sm-and-down" :span="5">
+        <el-aside class="hidden-xs-only"></el-aside>
       </el-col> -->
-      <el-col :span="24">
+      <el-col :span="screenState.width">
         <el-container class="full-height full-width">
+          <!-- <el-button class="toggle-sidebar hidden-sm-and-up" @click="dialogVisible = true">
+            Show List
+          </el-button> -->
           <el-header></el-header>
           <el-main>
             <ChatFrame
@@ -26,6 +29,17 @@
         </el-container>
       </el-col>
     </el-row>
+    <!-- 在手机屏幕上显示list的对话框 -->
+    <!-- <el-dialog
+      title="Show List"
+      v-model="dialogVisible"
+      :fullscreen="true"
+      class="list hidden-sm-and-up"
+    >
+      <el-col :span="24">
+        <el-aside></el-aside>
+      </el-col>
+    </el-dialog> -->
   </div>
 </template>
 
@@ -33,7 +47,7 @@
 import MessageInput from '@/components/MessageInput.vue'
 import ChatFrame from '@/components/ChatFrame.vue'
 import ModelButton from '@/components/ModelButton.vue'
-import { ref } from 'vue'
+import { ref, reactive, watchEffect, onMounted, onBeforeUnmount } from 'vue'
 import { chat } from '@/services/chatgpt'
 import { setMessage } from '@/utils/init'
 import { useMessageContentStore, useMessageStore } from '@/store/message'
@@ -45,6 +59,32 @@ const messageStore = useMessageStore()
 const contentStore = useMessageContentStore()
 
 let msg: GPTmessage
+
+const dialogVisible = ref(false) // 控制对话框是否显示的状态
+// 屏幕宽度相关变量
+const screenWidth = ref(window.innerWidth)
+const screenState = reactive({ width: 20 })
+
+watchEffect(() => {
+  if (screenWidth.value <= 768) {
+    //如果屏幕尺寸小于或等于768px
+    screenState.width = 24
+  } else {
+    screenState.width = 24
+  }
+})
+
+onMounted(() => {
+  window.addEventListener('resize', () => {
+    screenWidth.value = window.innerWidth
+  })
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', () => {
+    screenWidth.value = window.innerWidth
+  })
+})
 
 //对话显示
 let ChatList = ref({ messages: [] } as GPTsession)

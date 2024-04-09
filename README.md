@@ -45,6 +45,11 @@ npm install
 npm run dev
 ```
 
+
+## 致谢
+[![Stargazers repo roster for @kidkin/ChatGPT-Fast-Web](https://reporoster.com/stars/notext/kidkin/ChatGPT-Fast-Web)](https://github.com/kidkin/ChatGPT-Fast-Web/stargazers)
+[![Forkers repo roster for @kidkin/ChatGPT-Fast-Web](https://reporoster.com/forks/notext/kidkin/ChatGPT-Fast-Web)](https://github.com/kidkin/ChatGPT-Fast-Web/network/members)
+
 ## LICENSE
 
 [MIT](https://opensource.org/license/mit/)

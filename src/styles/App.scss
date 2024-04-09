@@ -1,4 +1,5 @@
 .el-footer {
+  position: relative; 
   height: 20%;
   .el-row {
     position: absolute;
@@ -16,7 +17,7 @@
 }
 
 .list {
-  background-color: rgb(192, 243, 243);
+  background-color: rgb(255, 182, 193);
 }
 
 .el-container {
@@ -52,4 +53,16 @@
   align-items: center;
 }
 
+/* 针对屏幕宽度小于sm的设备隐藏元素 */
+@media (max-width: 767px) {
+  .hidden-sm-and-down {
+    display: none;
+  }
+}
 
+/* 针对屏幕宽度大于或等于sm的设备隐藏元素 */
+@media (min-width: 768px) {
+  .hidden-sm-and-up {
+    display: none;
+  }
+}
