@@ -49,7 +49,7 @@ import MessageInput from '@/components/MessageInput.vue'
 import ChatFrame from '@/components/ChatFrame.vue'
 import ModelButton from '@/components/ModelButton.vue'
 import KeyButton from '@/components/KeyButton.vue'
-import { ref, reactive, watchEffect, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, watchEffect, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { chat } from '@/services/chatgpt'
 import { setMessage } from '@/utils/init'
 import { useMessageContentStore, useMessageStore } from '@/store/message'
@@ -61,6 +61,15 @@ const messageStore = useMessageStore()
 const contentStore = useMessageContentStore()
 
 let msg: GPTmessage
+
+const scrollToBottom = () => {
+  nextTick(() => {
+    const chatContainer = document.querySelector('.el-main')
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight
+    }
+  })
+}
 
 const dialogVisible = ref(false) // 控制对话框是否显示的状态
 // 屏幕宽度相关变量
@@ -80,6 +89,7 @@ onMounted(() => {
   window.addEventListener('resize', () => {
     screenWidth.value = window.innerWidth
   })
+  scrollToBottom()
 })
 
 onBeforeUnmount(() => {
@@ -138,6 +148,7 @@ const send = async (message: any) => {
       // ChatList.value.messages.push(...[msg])
       console.log('显示列表', ChatList.value)
       console.log('对话列表', msgList.value)
+      scrollToBottom()
     })
   } catch (error) {
     console.error('Error occurred:', error) // 处理错误
