@@ -1,5 +1,5 @@
 <template>
-  <el-button plain @click="dialogFormVisible = true " type="primary" circle :size="buttonSize"
+  <el-button plain @click="dialogFormVisible = true" type="primary" circle :size="buttonSize"
     ><el-icon><Key /></el-icon
   ></el-button>
   <el-dialog v-model="dialogFormVisible" title="" width="500" append-to-body="true" size="small">
@@ -17,15 +17,15 @@
     </el-form>
     <template #footer>
       <div class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="update"> Confirm </el-button>
+        <el-button @click="dialogFormVisible = false">取消</el-button>
+        <el-button type="primary" @click="update"> 确认 </el-button>
       </div>
     </template>
   </el-dialog>
 </template>
 
 <script lang="ts" setup>
-import {onMounted, onUnmounted, reactive, ref } from 'vue'
+import { onMounted, onUnmounted, reactive, ref } from 'vue'
 import { useOpenaiStore } from '../store/openai'
 
 //按钮大小
