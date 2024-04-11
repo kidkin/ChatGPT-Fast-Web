@@ -25,8 +25,9 @@
 	
 Date   |  Update
 ------- | :-------
-04-09  | Added the front-end configuration apikey button, changed button style, dialog box automatically scrolls to the bottom.
-04-08  | Added display of time for dialogue records, optimized UI.
+04/11 | Added message list, multiple conversation options.
+04/09  | Added the front-end configuration apikey button, changed button style, dialog box automatically scrolls to the bottom.
+04/08  | Added display of time for dialogue records, optimized UI.
 </details>
 
 ## Local Deployment

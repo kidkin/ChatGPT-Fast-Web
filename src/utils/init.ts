@@ -18,6 +18,10 @@ export function setMessage(role: Role, content: string): GPTmessage {
 // model: string
 // content: string
 
+function isMask(arg: Mask | GPTsession): arg is Mask {
+  return (arg as Mask).context !== undefined;
+}
+
 export function setChatList(mask: Mask): GPTsession {
   const openaiStore = useOpenaiStore()
   const session: GPTsession = {
@@ -36,16 +40,31 @@ export function setChatList(mask: Mask): GPTsession {
   return session
 }
 
-export function setMessageList(mask: Mask): GPTsessionContent {
+export function setMessageList(arg: Mask | GPTsession): GPTsessionContent {
   const session: GPTsessionContent = {
     contents: []
   }
-  for (const message of mask.context) {
-    const msg: GPTmessageContent = {
-      role: message.role,
-      content: message.content
+  if(isMask(arg)){
+    const mask = arg as Mask;
+    for (const message of mask.context) {
+      const msg: GPTmessageContent = {
+        role: message.role,
+        content: message.content
+      }
+      session.contents.push(msg)
     }
-    session.contents.push(msg)
+  }
+  else{
+    const gptsession = arg as GPTsession
+    for(const message of gptsession.messages){
+      const msg: GPTmessageContent = {
+        role: message.role,
+        content: message.content
+      }
+      session.contents.push(msg)
+    }
   }
   return session
 }
+
+

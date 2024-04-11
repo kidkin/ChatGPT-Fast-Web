@@ -1,17 +1,17 @@
 .el-footer {
-  position: relative; 
+  position: relative;
   height: 20%;
   .el-row {
     position: absolute;
     // bottom: 13.5vh;
-    margin-right: 10px;
+    // margin-right: 10px;
     margin-top: 1vh;
     left: 50%;
     transform: translateX(-50%);
     width: 95%;
   }
   .el-row > * {
-    margin-right: 1vh;
+    margin-right: 10px;
     // margin-left: 2.5vh;
   }
 }

@@ -10,7 +10,9 @@
           <!-- <el-button class="toggle-sidebar hidden-sm-and-up" @click="dialogVisible = true">
             Show List
           </el-button> -->
-          <el-header></el-header>
+          <el-header>
+            <ChatListButton @select-chat-list="handleSelectChatList" />
+          </el-header>
           <el-main>
             <ChatFrame
               v-for="message in ChatList.messages"
@@ -51,17 +53,38 @@ import ModelButton from '@/components/ModelButton.vue'
 import KeyButton from '@/components/KeyButton.vue'
 import { ref, reactive, watchEffect, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { chat } from '@/services/chatgpt'
-import { setMessage } from '@/utils/init'
-import { useMessageContentStore, useMessageStore } from '@/store/message'
+import { setMessage, setMessageList } from '@/utils/init'
+import { useMessageContentStore, useMessageStore, useChatListStore } from '@/store/message'
 import { Role, type GPTmessage, type GPTsession, type GPTsessionContent } from '@/types'
-import MaskButton from './components/MaskButton.vue'
-import ClearMessageButton from './components/ClearMessageButton.vue'
+import MaskButton from '@/components/MaskButton.vue'
+import ClearMessageButton from '@/components/ClearMessageButton.vue'
+import ChatListButton from '@/components/ChatListButton.vue'
+import { useCreatedAtStore } from './store/id'
 
 const messageStore = useMessageStore()
 const contentStore = useMessageContentStore()
-
+const chatlistStore = useChatListStore()
+const createdAtStore = useCreatedAtStore()
 let msg: GPTmessage
+//跳转github
+// function goToGitHub() {
+//   window.open('https://github.com/kidkin/ChatGPT-Fast-Web', '_blank')
+// }
 
+//选择对话
+const handleSelectChatList = (createdAt: number) => {
+  createdAtStore.setCreatedAt(createdAt)
+  messageStore.initMessageList(createdAtStore.getCreatedAt())
+  ChatList.value = messageStore.getMessageList()
+  contentStore.clearMessages()
+  contentStore.addMessages1(setMessageList(ChatList.value))
+  msgList.value = contentStore.getContentList()
+  received.value = ''
+  console.log('Selected chat list at time:', createdAt)
+  // 你可以在这里做更多的逻辑处理，比如更新父组件的状态等
+}
+
+//滚动条自动触底
 const scrollToBottom = () => {
   nextTick(() => {
     const chatContainer = document.querySelector('.el-main')
@@ -78,7 +101,6 @@ const screenState = reactive({ width: 20 })
 
 watchEffect(() => {
   if (screenWidth.value <= 768) {
-    //如果屏幕尺寸小于或等于768px
     screenState.width = 24
   } else {
     screenState.width = 24
@@ -102,7 +124,8 @@ onBeforeUnmount(() => {
 let ChatList = ref({ messages: [] } as GPTsession)
 const received = ref('')
 
-ChatList.value = messageStore.getChatList()
+messageStore.initMessageList(createdAtStore.getCreatedAt())
+ChatList.value = messageStore.getMessageList()
 
 // const newMask: Mask = mask.find((item) => item.createdAt === 1712412059698)!
 // ChatList.value = setChatList(newMask)
@@ -144,7 +167,8 @@ const send = async (message: any) => {
       received.value += receivedMessage
       msg = setMessage(Role.Assistant, received.value)
       messageStore.addMessage(msg)
-      ChatList.value = messageStore.ChatList
+      ChatList.value = messageStore.MessageList
+      chatlistStore.syncChatList(createdAtStore.getCreatedAt(), ChatList.value)
       // ChatList.value.messages.push(...[msg])
       console.log('显示列表', ChatList.value)
       console.log('对话列表', msgList.value)

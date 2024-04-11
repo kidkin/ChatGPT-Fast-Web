@@ -1,3 +1,8 @@
+export type ChatList = {
+  createdAt: number
+  name:string
+  Chat:GPTsession
+}
 export type GPTsession = {
   messages: GPTmessage[]
 }
